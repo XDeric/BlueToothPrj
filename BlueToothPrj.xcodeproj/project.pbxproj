@@ -103,15 +103,10 @@
 		8550B7E525796E9A002D7E2D /* BlueToothPrj */ = {
 			isa = PBXGroup;
 			children = (
-				8550B7E625796E9A002D7E2D /* AppDelegate.swift */,
-				8550B7E825796E9A002D7E2D /* SceneDelegate.swift */,
+				8550B832257AD71F002D7E2D /* Supporting Files */,
 				8550B819257978CB002D7E2D /* Summary.swift */,
 				8550B81E25797B6C002D7E2D /* ApiClient.swift */,
 				8550B7EA25796E9A002D7E2D /* ViewController.swift */,
-				8550B7EC25796E9A002D7E2D /* Main.storyboard */,
-				8550B7EF25796EA0002D7E2D /* Assets.xcassets */,
-				8550B7F125796EA0002D7E2D /* LaunchScreen.storyboard */,
-				8550B7F425796EA0002D7E2D /* Info.plist */,
 			);
 			path = BlueToothPrj;
 			sourceTree = "<group>";
@@ -132,6 +127,19 @@
 				8550B80A25796EA1002D7E2D /* Info.plist */,
 			);
 			path = BlueToothPrjUITests;
+			sourceTree = "<group>";
+		};
+		8550B832257AD71F002D7E2D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8550B7E625796E9A002D7E2D /* AppDelegate.swift */,
+				8550B7E825796E9A002D7E2D /* SceneDelegate.swift */,
+				8550B7EC25796E9A002D7E2D /* Main.storyboard */,
+				8550B7EF25796EA0002D7E2D /* Assets.xcassets */,
+				8550B7F125796EA0002D7E2D /* LaunchScreen.storyboard */,
+				8550B7F425796EA0002D7E2D /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

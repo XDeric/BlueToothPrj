@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreBluetooth
 
 class ViewController: UIViewController {
 
@@ -37,3 +38,27 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController: CBCentralManagerDelegate{
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        switch central.state {
+        
+        case .unknown:
+            <#code#>
+        case .resetting:
+            <#code#>
+        case .unsupported:
+            <#code#>
+        case .unauthorized:
+            <#code#>
+        case .poweredOff:
+            <#code#>
+        case .poweredOn:
+            <#code#>
+        @unknown default:
+            <#code#>
+        }
+        
+    }
+    
+    
+}
