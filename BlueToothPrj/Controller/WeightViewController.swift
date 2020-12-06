@@ -8,7 +8,31 @@
 import UIKit
 import CoreBluetooth
 
-class ViewController: UIViewController {
+class WeightViewController: UIViewController {
+    
+    enum Section {
+        case main
+    }
+    
+    private typealias DataSource = UICollectionViewDiffableDataSource<Section, Int>
+    
+    struct Item: Hashable {
+      let name: String
+      let price: Double
+      let identifier = UUID()
+      
+      func hash(into hasher: inout Hasher) {
+        hasher.combine(identifier)
+      }
+    }
+    
+    private var weightCollectionView: UICollectionView = {
+        var wCV = UICollectionView()
+        //wCV.datasource = self
+        
+        
+        return wCV
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,24 +62,24 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: CBCentralManagerDelegate{
+extension WeightViewController: CBCentralManagerDelegate{
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
         
         case .unknown:
-            <#code#>
+            print("uknown")
         case .resetting:
-            <#code#>
+            print("uknown")
         case .unsupported:
-            <#code#>
+            print("uknown")
         case .unauthorized:
-            <#code#>
+            print("uknown")
         case .poweredOff:
-            <#code#>
+            print("uknown")
         case .poweredOn:
-            <#code#>
+            print("uknown")
         @unknown default:
-            <#code#>
+            print("uknown")
         }
         
     }
