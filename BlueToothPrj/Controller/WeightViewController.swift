@@ -10,6 +10,15 @@ import CoreBluetooth
 
 class WeightViewController: UIViewController {
     
+    var apiClient = ApiClient()
+    var summaryData = [Country](){
+        didSet{
+            DispatchQueue.main.async {
+                //self.tableview.reloadata
+            }
+        }
+    }
+    
     enum Section {
         case main
     }
@@ -17,13 +26,13 @@ class WeightViewController: UIViewController {
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, Int>
     
     struct Item: Hashable {
-      let name: String
-      let price: Double
-      let identifier = UUID()
-      
-      func hash(into hasher: inout Hasher) {
-        hasher.combine(identifier)
-      }
+        let name: String
+        let price: Double
+        let identifier = UUID()
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(identifier)
+        }
     }
     
     private var weightCollectionView: UICollectionView = {
@@ -33,21 +42,16 @@ class WeightViewController: UIViewController {
         
         return wCV
     }()
-
+    
+    //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         //tableView.datasource = self
         fetchData()
+        setUpCollectionView
     }
     
-    var apiClient = ApiClient()
-    var summaryData = [Country](){
-        didSet{
-            DispatchQueue.main.async {
-                //self.tableview.reloadata
-            }
-        }
-    }
+    
     
     private func fetchData(){
         apiClient.fetchCovidData { [weak self] (result) in
@@ -59,7 +63,19 @@ class WeightViewController: UIViewController {
             }
         }
     }
-
+    
+    func setUpCollectionView(){
+        
+        weightCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(weightCollectionView)
+        NSLayoutConstraint.activate([
+            self.view.topAnchor.constraint(equalTo: weightCollectionView.topAnchor),
+            self.view.bottomAnchor.constraint(equalTo: weightCollectionView.bottomAnchor),
+            self.view.leadingAnchor.constraint(equalTo: weightCollectionView.leadingAnchor),
+            self.view.trailingAnchor.constraint(equalTo: weightCollectionView.trailingAnchor),
+        ])
+    }
+    
 }
 
 extension WeightViewController: CBCentralManagerDelegate{
