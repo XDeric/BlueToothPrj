@@ -8,6 +8,7 @@
 import UIKit
 import CoreBluetooth
 
+
 class WeightViewController: UIViewController {
     
     var apiClient = ApiClient()
@@ -19,36 +20,72 @@ class WeightViewController: UIViewController {
         }
     }
     
+    
     enum Section {
         case main
     }
     
-    private typealias DataSource = UICollectionViewDiffableDataSource<Section, Int>
+    //MARK: typealias datasource and snapshot
+    typealias DataSource = UICollectionViewDiffableDataSource<Section,Weight>
+    typealias DatasourceSnapshot = NSDiffableDataSourceSnapshot<Section,Weight>
+    private var dataSource: DataSource!
+    private var dataSourceSnap = DatasourceSnapshot()
     
-    struct Item: Hashable {
-        let name: String
-        let price: Double
-        let identifier = UUID()
-        
-        func hash(into hasher: inout Hasher) {
-            hasher.combine(identifier)
-        }
-    }
     
-    private var weightCollectionView: UICollectionView = {
-        var wCV = UICollectionView()
-        //wCV.datasource = self
-        
-        
-        return wCV
-    }()
+    //Mark: Weight CollectionView
+    private var weightCollectionView: UICollectionView!
+    
+//    private func configureDataSource() {
+//       dataSource = UICollectionViewDiffableDataSource<ViewController.Section, Weight>()
+//
+//       // set type of animation on the data source
+//       dataSource.defaultRowAnimation = .fade
+//    }
     
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         //tableView.datasource = self
         fetchData()
-        setUpCollectionView
+        collectionViewSetup()
+        
+    }
+    
+    private func collectionLayout()-> UICollectionViewLayout{
+        //item
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        
+        //group
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(75))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        //section
+        let section = NSCollectionLayoutSection(group: group)
+        
+        //layout
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        
+        return layout
+    }
+    
+    
+    private func collectionViewSetup(){
+        weightCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: collectionLayout())
+        weightCollectionView.delegate = self
+        weightCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        weightCollectionView.backgroundColor = .systemBackground
+        weightCollectionView.register(WeightCell.self, forCellWithReuseIdentifier: WeightCell.cellIdentifier)
+        view.addSubview(weightCollectionView)
+    }
+    
+    private func configureDatasource(){
+        dataSource = DataSource(collectionView: weightCollectionView, cellProvider: { (collectionView, indexPath, weight) -> UICollectionViewCell? in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeightCell.cellIdentifier, for: indexPath) as! WeightCell
+            
+            return cell
+        })
     }
     
     
@@ -64,19 +101,26 @@ class WeightViewController: UIViewController {
         }
     }
     
-    func setUpCollectionView(){
-        
-        weightCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(weightCollectionView)
-        NSLayoutConstraint.activate([
-            self.view.topAnchor.constraint(equalTo: weightCollectionView.topAnchor),
-            self.view.bottomAnchor.constraint(equalTo: weightCollectionView.bottomAnchor),
-            self.view.leadingAnchor.constraint(equalTo: weightCollectionView.leadingAnchor),
-            self.view.trailingAnchor.constraint(equalTo: weightCollectionView.trailingAnchor),
-        ])
-    }
+    
     
 }
+
+
+
+extension WeightViewController : UICollectionViewDelegate{
+    
+}
+
+
+
+
+
+
+
+
+
+
+
 
 extension WeightViewController: CBCentralManagerDelegate{
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
