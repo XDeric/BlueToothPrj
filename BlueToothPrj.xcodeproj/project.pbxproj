@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		8550B7E725796E9A002D7E2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550B7E625796E9A002D7E2D /* AppDelegate.swift */; };
 		8550B7E925796E9A002D7E2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550B7E825796E9A002D7E2D /* SceneDelegate.swift */; };
-		8550B7EB25796E9A002D7E2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550B7EA25796E9A002D7E2D /* ViewController.swift */; };
+		8550B7EB25796E9A002D7E2D /* WeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550B7EA25796E9A002D7E2D /* WeightViewController.swift */; };
 		8550B7EE25796E9A002D7E2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8550B7EC25796E9A002D7E2D /* Main.storyboard */; };
 		8550B7F025796EA0002D7E2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8550B7EF25796EA0002D7E2D /* Assets.xcassets */; };
 		8550B7F325796EA0002D7E2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8550B7F125796EA0002D7E2D /* LaunchScreen.storyboard */; };
@@ -17,6 +17,8 @@
 		8550B80925796EA1002D7E2D /* BlueToothPrjUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550B80825796EA1002D7E2D /* BlueToothPrjUITests.swift */; };
 		8550B81A257978CB002D7E2D /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550B819257978CB002D7E2D /* Summary.swift */; };
 		8550B81F25797B6C002D7E2D /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550B81E25797B6C002D7E2D /* ApiClient.swift */; };
+		8550B837257D9B64002D7E2D /* WeightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550B836257D9B64002D7E2D /* WeightCell.swift */; };
+		8550B84C25827D9B002D7E2D /* weightHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550B84B25827D9B002D7E2D /* weightHash.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +42,7 @@
 		8550B7E325796E9A002D7E2D /* BlueToothPrj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueToothPrj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8550B7E625796E9A002D7E2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8550B7E825796E9A002D7E2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8550B7EA25796E9A002D7E2D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8550B7EA25796E9A002D7E2D /* WeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightViewController.swift; sourceTree = "<group>"; };
 		8550B7ED25796E9A002D7E2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8550B7EF25796EA0002D7E2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8550B7F225796EA0002D7E2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,6 +55,8 @@
 		8550B80A25796EA1002D7E2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8550B819257978CB002D7E2D /* Summary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
 		8550B81E25797B6C002D7E2D /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		8550B836257D9B64002D7E2D /* WeightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightCell.swift; sourceTree = "<group>"; };
+		8550B84B25827D9B002D7E2D /* weightHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weightHash.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,15 +107,10 @@
 		8550B7E525796E9A002D7E2D /* BlueToothPrj */ = {
 			isa = PBXGroup;
 			children = (
-				8550B7E625796E9A002D7E2D /* AppDelegate.swift */,
-				8550B7E825796E9A002D7E2D /* SceneDelegate.swift */,
-				8550B819257978CB002D7E2D /* Summary.swift */,
-				8550B81E25797B6C002D7E2D /* ApiClient.swift */,
-				8550B7EA25796E9A002D7E2D /* ViewController.swift */,
-				8550B7EC25796E9A002D7E2D /* Main.storyboard */,
-				8550B7EF25796EA0002D7E2D /* Assets.xcassets */,
-				8550B7F125796EA0002D7E2D /* LaunchScreen.storyboard */,
-				8550B7F425796EA0002D7E2D /* Info.plist */,
+				8550B832257AD71F002D7E2D /* Supporting Files */,
+				8550B834257D9409002D7E2D /* Model */,
+				8550B833257D9405002D7E2D /* View */,
+				8550B835257D9436002D7E2D /* Controller */,
 			);
 			path = BlueToothPrj;
 			sourceTree = "<group>";
@@ -132,6 +131,45 @@
 				8550B80A25796EA1002D7E2D /* Info.plist */,
 			);
 			path = BlueToothPrjUITests;
+			sourceTree = "<group>";
+		};
+		8550B832257AD71F002D7E2D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8550B7E625796E9A002D7E2D /* AppDelegate.swift */,
+				8550B7E825796E9A002D7E2D /* SceneDelegate.swift */,
+				8550B7EC25796E9A002D7E2D /* Main.storyboard */,
+				8550B7EF25796EA0002D7E2D /* Assets.xcassets */,
+				8550B7F125796EA0002D7E2D /* LaunchScreen.storyboard */,
+				8550B7F425796EA0002D7E2D /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8550B833257D9405002D7E2D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8550B836257D9B64002D7E2D /* WeightCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8550B834257D9409002D7E2D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8550B819257978CB002D7E2D /* Summary.swift */,
+				8550B81E25797B6C002D7E2D /* ApiClient.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8550B835257D9436002D7E2D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8550B7EA25796E9A002D7E2D /* WeightViewController.swift */,
+				8550B84B25827D9B002D7E2D /* weightHash.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,10 +302,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8550B7EB25796E9A002D7E2D /* ViewController.swift in Sources */,
+				8550B7EB25796E9A002D7E2D /* WeightViewController.swift in Sources */,
 				8550B7E725796E9A002D7E2D /* AppDelegate.swift in Sources */,
 				8550B81A257978CB002D7E2D /* Summary.swift in Sources */,
+				8550B837257D9B64002D7E2D /* WeightCell.swift in Sources */,
 				8550B7E925796E9A002D7E2D /* SceneDelegate.swift in Sources */,
+				8550B84C25827D9B002D7E2D /* weightHash.swift in Sources */,
 				8550B81F25797B6C002D7E2D /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
