@@ -19,6 +19,8 @@ class WeightViewController: UIViewController {
             }
         }
     }
+    
+    var cbManager: CBCentralManager!
     var weightData = [Weight](){
         didSet{
             applySnapshot(weight: weightData)
@@ -52,6 +54,7 @@ class WeightViewController: UIViewController {
         collectionViewSetup()
         configureDatasource()
         applySnapshot(weight: [exampleData,exampleData2,exampleData3])
+        //cbManager = CBCentralManager(delegate: self, queue: nil, options: .none)
     }
     
     private func collectionLayout()-> UICollectionViewLayout{
@@ -87,6 +90,7 @@ class WeightViewController: UIViewController {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeightCell.cellIdentifier, for: indexPath) as! WeightCell
             
             cell.textLabel.text = "test"
+            
             cell.reset()
             
             return cell
@@ -119,23 +123,14 @@ class WeightViewController: UIViewController {
 extension WeightViewController : UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let weight = dataSource.itemIdentifier(for: indexPath) else {return}
-        print(weight)
+        print(weight.time)
     }
     
 }
 
 
-
-
-
-
-
-
-
-
-
-
 extension WeightViewController: CBCentralManagerDelegate{
+    
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
         
