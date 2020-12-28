@@ -5,6 +5,7 @@
 //  Created by EricM on 12/6/20.
 //
 
+import Charts
 import UIKit
 
 class WeightCell: UICollectionViewCell{

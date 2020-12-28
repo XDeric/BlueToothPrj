@@ -54,7 +54,7 @@ class WeightViewController: UIViewController {
         collectionViewSetup()
         configureDatasource()
         applySnapshot(weight: [exampleData,exampleData2,exampleData3])
-        //cbManager = CBCentralManager(delegate: self, queue: nil, options: .none)
+        cbManager = CBCentralManager(delegate: self, queue: nil, options: .none)
     }
     
     private func collectionLayout()-> UICollectionViewLayout{
@@ -137,20 +137,24 @@ extension WeightViewController: CBCentralManagerDelegate{
         case .unknown:
             print("uknown")
         case .resetting:
-            print("uknown")
+            print("resetting")
         case .unsupported:
-            print("uknown")
+            print("unsupported")
         case .unauthorized:
-            print("uknown")
+            print("unauthorized")
         case .poweredOff:
-            print("uknown")
+            print("powered off")
         case .poweredOn:
-            print("uknown")
+            print("powered on")
+            cbManager.scanForPeripherals(withServices: nil)
         @unknown default:
-            print("uknown")
+            print("default")
         }
         
     }
     
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        print(peripheral)
+    }
     
 }
