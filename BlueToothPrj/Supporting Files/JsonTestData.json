@@ -1,8 +1,24 @@
-//
-//  JsonTestData.swift
-//  BlueToothPrj
-//
-//  Created by EricM on 12/28/20.
-//
-
-import Foundation
+{
+    "Weight":[
+        {
+        "id":1,
+        "lbs": 130
+        },
+        {
+        "id":2,
+        "lbs": 101
+        },
+        {
+        "id":3,
+        "lbs": 103
+        },
+        {
+        "id":4,
+        "lbs": 98
+        },
+        {
+        "id":5,
+        "lbs": 120
+        },
+    ]
+}
