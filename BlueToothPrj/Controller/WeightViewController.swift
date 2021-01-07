@@ -12,36 +12,21 @@ import CoreBluetooth
 class WeightViewController: UIViewController {
     
     //MARK: Properties
-    var apiClient = ApiClient()
-    var summaryData = [Country](){
+    var cbManager: CBCentralManager!
+    var newWeightData = [Weighted](){
         didSet{
-            DispatchQueue.main.async {
-                //self.tableview.reloadata
-            }
+            applySnapshot(weight: newWeightData)
         }
     }
-    
-    var cbManager: CBCentralManager!
-//    var weightData = [Weight](){
-//        didSet{
-//            applySnapshot(weight: weightData)
-//        }
-//    }
-    var newData = [Weighted](){
+    var loadWeightData = [SavedWeightData](){
         didSet{
-            applySnapshot(weight: newData)
+            applySnapshot(weight: newWeightData)
         }
     }
     
     //views
     private var weightCollectionView: UICollectionView!
-    private var myChartView = LineChartView()
-    
-    
-//    var exampleData = Weight.init(weight: 6)
-//    var exampleData2 = Weight.init(weight: 5)
-//    var exampleData3 = Weight.init(weight: 7)
-    
+    private var myChartView = ChartView()
     
     // sections for collection view
     enum Section {
@@ -62,42 +47,30 @@ class WeightViewController: UIViewController {
         collectionViewSetup()
         configureDatasource()
         loadData()
-        //applySnapshot(weight: [exampleData,exampleData2,exampleData3])
         //   cbManager = CBCentralManager(delegate: self, queue: nil, options: .none) //bluetooth on device don't work on simulation
         lineViewChartSetup()
     }
     
     //MARK: Chart View Setup
     private func lineViewChartSetup(){
-        myChartView.delegate = self
+        myChartView.lineChart.delegate = self
         view.addSubview(myChartView)
-        myChartView.pinchZoomEnabled = true
-        myChartView.translatesAutoresizingMaskIntoConstraints = false
-        myChartView.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
-        myChartView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        myChartView.frame = CGRect(x: view.frame.size.width, y: view.frame.size.width, width: 100, height: 100)
+        myChartView.lineChart.pinchZoomEnabled = true
+        myChartView.lineChart.translatesAutoresizingMaskIntoConstraints = false
+        myChartView.lineChart.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
+        myChartView.lineChart.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        myChartView.lineChart.frame = CGRect(x: view.frame.size.width, y: view.frame.size.width, width: 100, height: 100)
         
         NSLayoutConstraint.activate([
-            myChartView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            myChartView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            myChartView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
-            myChartView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            myChartView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+            myChartView.lineChart.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            myChartView.lineChart.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            myChartView.lineChart.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
+            myChartView.lineChart.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            myChartView.lineChart.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
-        for x in newData{
-            setChartData(xaxis: Double(x.id), yaxis: Double(x.lbs))
+        for x in newWeightData{
+            myChartView.setChartData(xaxis: Double(x.id), yaxis: Double(x.lbs))
         }
-    }
-    
-    var plots = [ChartDataEntry]()
-    
-    func setChartData(xaxis: Double, yaxis: Double){
-        plots.append(ChartDataEntry(x: xaxis, y: yaxis))
-        
-        let set = LineChartDataSet(entries: plots)
-        set.colors = ChartColorTemplates.joyful()
-        let data = LineChartData(dataSet: set)
-        myChartView.data = data
     }
     
     //MARK: collection view Setup
@@ -131,23 +104,27 @@ class WeightViewController: UIViewController {
         dataSource = DataSource(collectionView: weightCollectionView, cellProvider: { (collectionView, indexPath, weight) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeightCell.cellIdentifier, for: indexPath) as! WeightCell
             
-            cell.textLabel.text = "test"
-            //            cell.reset()
+            cell.textLabel.text = "Weight: \(weight.lbs), Time: \(weight.time)"
             
+            //cell.reset()
             return cell
         })
     }
     
-    private func fetchData(){
-        apiClient.fetchCovidData { [weak self] (result) in
-            switch result{
-            case .failure(let error):
-                print(error)
-            case .success(let data):
-                self?.summaryData = data
-            }
-        }
-    }
+//    private func fetchData(){
+//        apiClient.fetchCovidData { [weak self] (result) in
+//            switch result{
+//            case .failure(let error):
+//                print(error)
+//            case .success(let data):
+//                self?.summaryData = data
+//            }
+//        }
+//    }
+    
+//    private func saveForReload(){
+//        let item = sa
+//    }
     
     private func loadData(){
         // just the string for the name of the file
@@ -158,7 +135,7 @@ class WeightViewController: UIViewController {
         let url = URL(fileURLWithPath: pathToJSONFile)
         do{
             let data = try Data(contentsOf: url)
-            newData = try WeightData.getWeights(from: data).weight
+            newWeightData = try WeightData.getWeights(from: data).weight
             // if either try fails the catch will catch both of them
         } catch{
             fatalError("couldn't get weight from JSON")
@@ -186,7 +163,6 @@ extension WeightViewController: UICollectionViewDelegate{
 }
 
 extension WeightViewController: ChartViewDelegate{}
-
 
 extension WeightViewController: CBCentralManagerDelegate{
     
