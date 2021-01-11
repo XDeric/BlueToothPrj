@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct PersistenceHelper<T: Codable> {
     
     func saveSingleElement(newElement: T) throws {

@@ -9,14 +9,13 @@ import Foundation
 
 class SaveWeight {
     private init(){}
-    static let saveWeight = SaveWeight()
+    static let saveManager = SaveWeight()
+    private let persistenceHelper = PersistenceHelper<SavedWeightData>(fileName: "saveWeight.plist")
 
-    func saveData(weight: Weighted) throws {
-        try persistenceHelper.save(newElement: weight)
-    }
-    private let persistenceHelper = PersistenceHelper<Weighted>(fileName: "saveWeight.plist")
+    func saveData(weight: SavedWeightData) throws {
+        try persistenceHelper.save(newElement: weight)}
     
-    func getWeight()throws -> [Weighted]{
+    func getWeight()throws -> [SavedWeightData]{
         return try persistenceHelper.getObjects()
     }
 }
