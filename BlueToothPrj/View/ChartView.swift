@@ -26,14 +26,13 @@ class ChartView: UIView, ChartViewDelegate {
         ])
         
     }
+    var plots = [ChartDataEntry]()
     
     func setChartData(xaxis: Double, yaxis: Double){
-        
-        var plots = [ChartDataEntry]()
         plots.append(ChartDataEntry(x: xaxis, y: yaxis))
         
         let set = LineChartDataSet(entries: plots)
-        set.colors = ChartColorTemplates.joyful()
+        set.colors = ChartColorTemplates.material()
         let data = LineChartData(dataSet: set)
         lineChart.data = data
     }
