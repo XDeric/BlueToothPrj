@@ -9,6 +9,38 @@ import XCTest
 @testable import BlueToothPrj
 
 class BlueToothPrjTests: XCTestCase {
+    
+    func testSavedData(){
+        var testWeight = [SavedWeightData]()
+            do{
+                try testWeight = SaveWeight.saveManager.getWeight()
+            }catch{
+                fatalError().localizedDescription
+            }
+        XCTAssertTrue(testWeight.count >= 1, "There is saved weight data")
+        
+//        XCTAssertEqual(<#T##expression1: Equatable##Equatable#>, <#T##expression2: Equatable##Equatable#>)
+    }
+    
+    
+    func testJsonData(){
+        var jsonData = [Weighted]()
+            guard let pathToJSONFile =
+                    Bundle.main.path(forResource: "JsonTestData", ofType: "json") else {fatalError("couldn't Find json file")}
+            
+            let url = URL(fileURLWithPath: pathToJSONFile)
+            do{
+                let data = try Data(contentsOf: url)
+                jsonData = try WeightData.getWeights(from: data).weight
+                // if either try fails the catch will catch both of them
+            } catch{
+                fatalError("couldn't get weight from JSON")
+            }
+        XCTAssert(jsonData.count >= 1, "There is data from json")
+    }
+    
+    
+    
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
