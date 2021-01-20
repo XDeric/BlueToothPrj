@@ -8,14 +8,9 @@
 import UIKit
 import FSCalendar
 
-class CalendarVC: UIViewController, FSCalendarDelegate {
+class CalendarVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource{
     
-    private var calendar: FSCalendar = {
-        let cal = FSCalendar()
-        
-        
-        return cal
-    }()
+    private var calendar = FSCalendar()
     
     private lazy var nextView: UIButton = {
         let bt = UIButton()
@@ -33,7 +28,7 @@ class CalendarVC: UIViewController, FSCalendarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //self if this viewcontroller
-        calendar.delegate = self
+        calendar .delegate = self
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         layoutSetup()
     }
@@ -58,8 +53,10 @@ class CalendarVC: UIViewController, FSCalendarDelegate {
     ///If nextView button gets tapped
     @objc private func didTapButton(){
         let weightVC = WeightViewController()
-        weightVC.modalPresentationStyle = .fullScreen
-        present(weightVC, animated: true)
+        self.navigationController?.pushViewController(weightVC, animated: true)
     }
     
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print("selected")
+    }
 }

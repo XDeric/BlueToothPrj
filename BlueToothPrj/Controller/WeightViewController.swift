@@ -59,7 +59,6 @@ class WeightViewController: UIViewController {
         myChartView.lineChart.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         NSLayoutConstraint.activate([
-            myChartView.lineChart.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             myChartView.lineChart.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             myChartView.lineChart.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
             myChartView.lineChart.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
