@@ -7,6 +7,7 @@ target 'BlueToothPrj' do
 
   # Pods for BlueToothPrj
   pod 'Charts'
+  pod 'FSCalendar'
 
   target 'BlueToothPrjTests' do
     inherit! :search_paths

@@ -7,18 +7,12 @@
 
 import UIKit
 
-struct Weight: Hashable {
-    let weight: Int
-    var time: String{
-        get {
-            let currentTime = Date()
-            let format = DateFormatter()
-            format.timeStyle = .medium
-            format.dateStyle = .medium
-            return format.string(from: currentTime)
-        }
-    }
-    let identifier = UUID()
+struct SavedWeightData: Hashable, Codable {
+    let id: Int
+    let lbs: Int
+    let time: String
+    
+    var identifier = UUID()
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(identifier)
