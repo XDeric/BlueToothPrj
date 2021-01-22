@@ -15,7 +15,7 @@ class BlueToothPrjTests: XCTestCase {
             do{
                 try testWeight = SaveWeight.saveManager.getWeight()
             }catch{
-                fatalError().localizedDescription
+                fatalError()//.localizedDescription
             }
         XCTAssertTrue(testWeight.count >= 1, "There is saved weight data")
 //        XCTAssertEqual(<#T##expression1: Equatable##Equatable#>, <#T##expression2: Equatable##Equatable#>)

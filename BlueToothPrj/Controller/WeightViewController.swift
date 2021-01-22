@@ -122,7 +122,7 @@ class WeightViewController: UIViewController {
         do{
             try loadWeightData = SaveWeight.saveManager.getWeight()
         }catch{
-            fatalError().localizedDescription
+            fatalError()//.localizedDescription
         }
     }
     
