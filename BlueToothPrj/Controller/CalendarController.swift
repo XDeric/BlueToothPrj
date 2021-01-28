@@ -15,10 +15,11 @@ class CalendarVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
         //self if this viewcontroller
-        calendar .delegate = self
+        calendar.delegate = self
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         layoutSetup()
     }
+    
     
     private func layoutSetup(){
         calendar.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +32,18 @@ class CalendarVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource{
         ])
     }
     
-    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("selected")
+        
     }
+    
+//    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+//        let weightVC = WeightViewController()
+//        print("se")
+//        
+//        self.navigationController?.pushViewController(weightVC, animated: true)
+//    }
+    
+    
+    
 }
