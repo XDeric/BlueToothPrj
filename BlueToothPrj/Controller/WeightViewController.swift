@@ -13,14 +13,10 @@ class WeightViewController: UIViewController {
     
     //MARK: Properties
     var cbManager: CBCentralManager!
-    var newWeightData = [Weighted](){
-        didSet{
-            applySnapshot(weight: newWeightData)
-        }
-    }
+    var newWeightData = [Weighted]()
     var loadWeightData = [SavedWeightData](){
         didSet{
-            applySnapshot(weight: newWeightData)
+            applySnapshot(weight: loadWeightData)
         }
     }
     
@@ -34,8 +30,8 @@ class WeightViewController: UIViewController {
     }
     
     //MARK: typealias datasource and snapshot
-    typealias DataSource = UICollectionViewDiffableDataSource<Section,Weighted>
-    typealias DatasourceSnapshot = NSDiffableDataSourceSnapshot<Section,Weighted>
+    typealias DataSource = UICollectionViewDiffableDataSource<Section,SavedWeightData>
+    typealias DatasourceSnapshot = NSDiffableDataSourceSnapshot<Section,SavedWeightData>
     private var dataSource: DataSource!
     private var snapshot = DatasourceSnapshot()
     
@@ -46,7 +42,9 @@ class WeightViewController: UIViewController {
         //fetchData()
         collectionViewSetup()
         configureDatasource()
-        loadData()
+        loadJsonData()
+//        saveForReload()
+        loadSave()
         //   cbManager = CBCentralManager(delegate: self, queue: nil, options: .none) //bluetooth on device don't work on simulation
         lineViewChartSetup()
     }
@@ -59,10 +57,8 @@ class WeightViewController: UIViewController {
         myChartView.lineChart.translatesAutoresizingMaskIntoConstraints = false
         myChartView.lineChart.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
         myChartView.lineChart.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        myChartView.lineChart.frame = CGRect(x: view.frame.size.width, y: view.frame.size.width, width: 100, height: 100)
         
         NSLayoutConstraint.activate([
-            myChartView.lineChart.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             myChartView.lineChart.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             myChartView.lineChart.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
             myChartView.lineChart.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -111,26 +107,30 @@ class WeightViewController: UIViewController {
         })
     }
     
-//    private func fetchData(){
-//        apiClient.fetchCovidData { [weak self] (result) in
-//            switch result{
-//            case .failure(let error):
-//                print(error)
-//            case .success(let data):
-//                self?.summaryData = data
-//            }
-//        }
-//    }
+    private func saveForReload(){
+        for x in newWeightData{
+            let item = SavedWeightData(id: x.id, lbs: x.lbs, time: x.time)
+            do{
+                try SaveWeight.saveManager.saveData(weight: item)
+            }catch{
+                fatalError()
+            }
+        }
+    }
     
-//    private func saveForReload(){
-//        let item = sa
-//    }
+    private func loadSave(){
+        do{
+            try loadWeightData = SaveWeight.saveManager.getWeight()
+        }catch{
+            fatalError()//.localizedDescription
+        }
+    }
     
-    private func loadData(){
+    private func loadJsonData(){
         // just the string for the name of the file
         guard let pathToJSONFile =
                 Bundle.main.path(forResource: "JsonTestData", ofType: "json") else {fatalError("couldn't Find json file")}
-        print(pathToJSONFile)
+        //print(pathToJSONFile)
         // is a reference to the ctual location of the json file
         let url = URL(fileURLWithPath: pathToJSONFile)
         do{
@@ -143,8 +143,8 @@ class WeightViewController: UIViewController {
     }
     
     //MARK: Apply new changes
-    private func applySnapshot(weight: [Weighted]){
-        snapshot = DatasourceSnapshot()
+    private func applySnapshot(weight: [SavedWeightData]){
+//        snapshot = DatasourceSnapshot()
         snapshot.appendSections([Section.main])
         snapshot.appendItems(weight)
         dataSource.apply(snapshot, animatingDifferences: true)
@@ -157,9 +157,13 @@ class WeightViewController: UIViewController {
 extension WeightViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let weight = dataSource.itemIdentifier(for: indexPath) else {return}
-        print(weight.lbs)
+        
+        guard var snapshot = dataSource?.snapshot() else {return}
+        snapshot.deleteItems([weight])
+
+        dataSource.apply(snapshot,animatingDifferences: true)
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
-    
 }
 
 extension WeightViewController: ChartViewDelegate{}

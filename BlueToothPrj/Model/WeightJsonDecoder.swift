@@ -30,4 +30,13 @@ enum JsonError: Error{
 // MARK: - Weighted
 struct Weighted: Codable, Hashable{
     let id, lbs: Int
+    var time: String{
+        get{
+            let currentTime = Date()
+            let format = DateFormatter()
+            format.timeStyle = .medium
+            format.dateStyle = .medium
+            return format.string(from: currentTime)
+        }
+    }
 }

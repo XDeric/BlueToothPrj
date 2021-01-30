@@ -8,7 +8,7 @@
 import Charts
 import UIKit
 
-class WeightCell: UICollectionViewCell{
+class WeightCell: UICollectionViewCell, ChartViewDelegate{
     
     static var cellIdentifier = "wCell"
     
@@ -26,6 +26,7 @@ class WeightCell: UICollectionViewCell{
             self.contentView.centerXAnchor.constraint(equalTo: textLabel.centerXAnchor),
             self.contentView.centerYAnchor.constraint(equalTo: textLabel.centerYAnchor),
         ])
+        
         self.textLabel = textLabel
         //self.reset()
     }

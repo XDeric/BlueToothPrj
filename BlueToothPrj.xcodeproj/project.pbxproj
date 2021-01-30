@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,11 +17,17 @@
 		8550B7F325796EA0002D7E2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8550B7F125796EA0002D7E2D /* LaunchScreen.storyboard */; };
 		8550B7FE25796EA1002D7E2D /* BlueToothPrjTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550B7FD25796EA1002D7E2D /* BlueToothPrjTests.swift */; };
 		8550B80925796EA1002D7E2D /* BlueToothPrjUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550B80825796EA1002D7E2D /* BlueToothPrjUITests.swift */; };
-		8550B81A257978CB002D7E2D /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550B819257978CB002D7E2D /* Summary.swift */; };
 		8550B81F25797B6C002D7E2D /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550B81E25797B6C002D7E2D /* ApiClient.swift */; };
 		8550B837257D9B64002D7E2D /* WeightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550B836257D9B64002D7E2D /* WeightCell.swift */; };
 		8550B84C25827D9B002D7E2D /* WeightHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550B84B25827D9B002D7E2D /* WeightHash.swift */; };
 		855575AF2590FAE000D5116F /* BTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855575AE2590FAE000D5116F /* BTManager.swift */; };
+		855575CB25997F6F00D5116F /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855575CA25997F6E00D5116F /* ChartView.swift */; };
+		855575D3259A74EB00D5116F /* JsonTestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 855575D2259A74EB00D5116F /* JsonTestData.json */; };
+		855575D8259A7EF200D5116F /* WeightJsonDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855575D7259A7EF200D5116F /* WeightJsonDecoder.swift */; };
+		8576DEED25A653F70019C74A /* PersistanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8576DEEC25A653F60019C74A /* PersistanceHelper.swift */; };
+		8576DEF425A6B2250019C74A /* SaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8576DEF325A6B2250019C74A /* SaveManager.swift */; };
+		8576DF0325B87C390019C74A /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8576DF0225B87C380019C74A /* CalendarController.swift */; };
+		8576DF1325B88CEA0019C74A /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8576DF1225B88CEA0019C74A /* NavigationController.swift */; };
 		ABBB91C623889A5ADC7ABADF /* Pods_BlueToothPrj_BlueToothPrjUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A8D6F41290D3CC16D4F62 /* Pods_BlueToothPrj_BlueToothPrjUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,11 +65,17 @@
 		8550B80425796EA1002D7E2D /* BlueToothPrjUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlueToothPrjUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8550B80825796EA1002D7E2D /* BlueToothPrjUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothPrjUITests.swift; sourceTree = "<group>"; };
 		8550B80A25796EA1002D7E2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8550B819257978CB002D7E2D /* Summary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
 		8550B81E25797B6C002D7E2D /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		8550B836257D9B64002D7E2D /* WeightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightCell.swift; sourceTree = "<group>"; };
 		8550B84B25827D9B002D7E2D /* WeightHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightHash.swift; sourceTree = "<group>"; };
 		855575AE2590FAE000D5116F /* BTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTManager.swift; sourceTree = "<group>"; };
+		855575CA25997F6E00D5116F /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		855575D2259A74EB00D5116F /* JsonTestData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JsonTestData.json; sourceTree = "<group>"; };
+		855575D7259A7EF200D5116F /* WeightJsonDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightJsonDecoder.swift; sourceTree = "<group>"; };
+		8576DEEC25A653F60019C74A /* PersistanceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceHelper.swift; sourceTree = "<group>"; };
+		8576DEF325A6B2250019C74A /* SaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveManager.swift; sourceTree = "<group>"; };
+		8576DF0225B87C380019C74A /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
+		8576DF1225B88CEA0019C74A /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		87468EB52497DF8829C45BB6 /* Pods-BlueToothPrj-BlueToothPrjUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueToothPrj-BlueToothPrjUITests.release.xcconfig"; path = "Target Support Files/Pods-BlueToothPrj-BlueToothPrjUITests/Pods-BlueToothPrj-BlueToothPrjUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8A6A8D6F41290D3CC16D4F62 /* Pods_BlueToothPrj_BlueToothPrjUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlueToothPrj_BlueToothPrjUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6523A9230489CC7EB706201 /* Pods-BlueToothPrj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueToothPrj.debug.xcconfig"; path = "Target Support Files/Pods-BlueToothPrj/Pods-BlueToothPrj.debug.xcconfig"; sourceTree = "<group>"; };
@@ -111,7 +123,6 @@
 				34AE50844690404921B86616 /* Pods-BlueToothPrjTests.debug.xcconfig */,
 				B068BA7F97068CC331716B4B /* Pods-BlueToothPrjTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -174,6 +185,7 @@
 				8550B7EC25796E9A002D7E2D /* Main.storyboard */,
 				8550B7EF25796EA0002D7E2D /* Assets.xcassets */,
 				8550B7F125796EA0002D7E2D /* LaunchScreen.storyboard */,
+				855575D2259A74EB00D5116F /* JsonTestData.json */,
 				8550B7F425796EA0002D7E2D /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -183,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				8550B836257D9B64002D7E2D /* WeightCell.swift */,
+				855575CA25997F6E00D5116F /* ChartView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -190,10 +203,12 @@
 		8550B834257D9409002D7E2D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8550B819257978CB002D7E2D /* Summary.swift */,
+				8576DEEC25A653F60019C74A /* PersistanceHelper.swift */,
+				8576DEF325A6B2250019C74A /* SaveManager.swift */,
 				8550B81E25797B6C002D7E2D /* ApiClient.swift */,
 				855575AE2590FAE000D5116F /* BTManager.swift */,
 				8550B84B25827D9B002D7E2D /* WeightHash.swift */,
+				855575D7259A7EF200D5116F /* WeightJsonDecoder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,6 +216,8 @@
 		8550B835257D9436002D7E2D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8576DF1225B88CEA0019C74A /* NavigationController.swift */,
+				8576DF0225B87C380019C74A /* CalendarController.swift */,
 				8550B7EA25796E9A002D7E2D /* WeightViewController.swift */,
 			);
 			path = Controller;
@@ -324,6 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				855575D3259A74EB00D5116F /* JsonTestData.json in Resources */,
 				8550B7F325796EA0002D7E2D /* LaunchScreen.storyboard in Resources */,
 				8550B7F025796EA0002D7E2D /* Assets.xcassets in Resources */,
 				8550B7EE25796E9A002D7E2D /* Main.storyboard in Resources */,
@@ -454,13 +472,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8576DEED25A653F70019C74A /* PersistanceHelper.swift in Sources */,
+				8576DF0325B87C390019C74A /* CalendarController.swift in Sources */,
+				855575CB25997F6F00D5116F /* ChartView.swift in Sources */,
+				855575D8259A7EF200D5116F /* WeightJsonDecoder.swift in Sources */,
 				8550B7EB25796E9A002D7E2D /* WeightViewController.swift in Sources */,
 				8550B7E725796E9A002D7E2D /* AppDelegate.swift in Sources */,
-				8550B81A257978CB002D7E2D /* Summary.swift in Sources */,
 				855575AF2590FAE000D5116F /* BTManager.swift in Sources */,
 				8550B837257D9B64002D7E2D /* WeightCell.swift in Sources */,
+				8576DF1325B88CEA0019C74A /* NavigationController.swift in Sources */,
 				8550B7E925796E9A002D7E2D /* SceneDelegate.swift in Sources */,
 				8550B84C25827D9B002D7E2D /* WeightHash.swift in Sources */,
+				8576DEF425A6B2250019C74A /* SaveManager.swift in Sources */,
 				8550B81F25797B6C002D7E2D /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,16 +15,12 @@ class ChartView: UIView, ChartViewDelegate {
     override init(frame: CGRect){
         super.init(frame: frame)
         lineChart.delegate = self
-        
         lineChart.translatesAutoresizingMaskIntoConstraints = false
-        
         self.addSubview(lineChart)
-        
-        NSLayoutConstraint.activate([
-            self.centerXAnchor.constraint(equalTo: lineChart.centerXAnchor),
-            self.centerYAnchor.constraint(equalTo: lineChart.centerYAnchor),
-        ])
-        
+//        NSLayoutConstraint.activate([
+//            self.centerXAnchor.constraint(equalTo: lineChart.centerXAnchor),
+//            self.centerYAnchor.constraint(equalTo: lineChart.centerYAnchor),
+//        ])
     }
     var plots = [ChartDataEntry]()
     
