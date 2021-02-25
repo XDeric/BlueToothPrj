@@ -31,11 +31,25 @@ class NavigationVC: UITabBarController {
         return nav
     }()
     
+    lazy var settingVC: UINavigationController = {
+        let nav = UINavigationController(rootViewController: SettingController())
+        let navAppearance = nav.navigationController?.navigationBar
+        navAppearance?.barStyle = .black
+        navAppearance?.isTranslucent = true
+        navAppearance?.barTintColor = #colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 1)
+        //https://developer.apple.com/documentation/foundation/nsattributedstring/key
+        navAppearance?.titleTextAttributes = [.foregroundColor: UIColor.black]
+        nav.title = "Setting"
+        return nav
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         calendarVC.tabBarItem = UITabBarItem(title: "Calendar", image: UIImage(systemName: "calendar"), tag: 0)
         weightVC.tabBarItem = UITabBarItem(title: "Weight", image: UIImage(systemName: "folder"), tag: 1)
-        self.viewControllers = [calendarVC, weightVC]
+        settingVC.tabBarItem = UITabBarItem(title: "Setting", image: UIImage(systemName: "gearshape"), tag: 2)
+        
+        self.viewControllers = [calendarVC, weightVC, settingVC]
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

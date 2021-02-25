@@ -12,9 +12,9 @@ import CoreBluetooth
 class WeightViewController: UIViewController {
     
     //MARK: Properties
-    var cbManager: CBCentralManager!
-    var newWeightData = [Weighted]()
-    var loadWeightData = [SavedWeightData](){
+    private var cbManager: CBCentralManager!
+    private var newWeightData = [Weighted]()
+    private var loadWeightData = [SavedWeightData](){
         didSet{
             applySnapshot(weight: loadWeightData)
         }
