@@ -11,6 +11,15 @@ class SettingController: UIViewController {
     
     private var setTableView = UITableView()
     
+    enum Section {
+        case main
+    }
+    //MARK: typealias datasource and snapshot
+    typealias DataSourceTable = UITableViewDiffableDataSource<Section,SavedWeightData>
+    typealias DatasourceSnapshotTable = NSDiffableDataSourceSnapshot<Section,SavedWeightData>
+    private var dataSource: DataSourceTable!
+    private var snapshot = DatasourceSnapshotTable()
+    
     lazy var back: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Back", for: .normal)
@@ -33,6 +42,7 @@ class SettingController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 
         // Do any additional setup after loading the view.
     }
