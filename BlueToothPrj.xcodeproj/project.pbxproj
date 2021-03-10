@@ -28,6 +28,8 @@
 		8576DEF425A6B2250019C74A /* SaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8576DEF325A6B2250019C74A /* SaveManager.swift */; };
 		8576DF0325B87C390019C74A /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8576DF0225B87C380019C74A /* CalendarController.swift */; };
 		8576DF1325B88CEA0019C74A /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8576DF1225B88CEA0019C74A /* NavigationController.swift */; };
+		8576DF2C25C3D2790019C74A /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8576DF2B25C3D2790019C74A /* CalendarTableViewCell.swift */; };
+		8576DF3925C9AC410019C74A /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8576DF3825C9AC400019C74A /* SettingController.swift */; };
 		ABBB91C623889A5ADC7ABADF /* Pods_BlueToothPrj_BlueToothPrjUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A8D6F41290D3CC16D4F62 /* Pods_BlueToothPrj_BlueToothPrjUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +78,8 @@
 		8576DEF325A6B2250019C74A /* SaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveManager.swift; sourceTree = "<group>"; };
 		8576DF0225B87C380019C74A /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 		8576DF1225B88CEA0019C74A /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		8576DF2B25C3D2790019C74A /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		8576DF3825C9AC400019C74A /* SettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
 		87468EB52497DF8829C45BB6 /* Pods-BlueToothPrj-BlueToothPrjUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueToothPrj-BlueToothPrjUITests.release.xcconfig"; path = "Target Support Files/Pods-BlueToothPrj-BlueToothPrjUITests/Pods-BlueToothPrj-BlueToothPrjUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8A6A8D6F41290D3CC16D4F62 /* Pods_BlueToothPrj_BlueToothPrjUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlueToothPrj_BlueToothPrjUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6523A9230489CC7EB706201 /* Pods-BlueToothPrj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueToothPrj.debug.xcconfig"; path = "Target Support Files/Pods-BlueToothPrj/Pods-BlueToothPrj.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				8550B836257D9B64002D7E2D /* WeightCell.swift */,
+				8576DF2B25C3D2790019C74A /* CalendarTableViewCell.swift */,
 				855575CA25997F6E00D5116F /* ChartView.swift */,
 			);
 			path = View;
@@ -219,6 +224,7 @@
 				8576DF1225B88CEA0019C74A /* NavigationController.swift */,
 				8576DF0225B87C380019C74A /* CalendarController.swift */,
 				8550B7EA25796E9A002D7E2D /* WeightViewController.swift */,
+				8576DF3825C9AC400019C74A /* SettingController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -472,9 +478,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8576DF3925C9AC410019C74A /* SettingController.swift in Sources */,
 				8576DEED25A653F70019C74A /* PersistanceHelper.swift in Sources */,
 				8576DF0325B87C390019C74A /* CalendarController.swift in Sources */,
 				855575CB25997F6F00D5116F /* ChartView.swift in Sources */,
+				8576DF2C25C3D2790019C74A /* CalendarTableViewCell.swift in Sources */,
 				855575D8259A7EF200D5116F /* WeightJsonDecoder.swift in Sources */,
 				8550B7EB25796E9A002D7E2D /* WeightViewController.swift in Sources */,
 				8550B7E725796E9A002D7E2D /* AppDelegate.swift in Sources */,

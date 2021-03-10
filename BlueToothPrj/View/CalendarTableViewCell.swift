@@ -26,9 +26,8 @@ class CalendarTableViewCell: UITableViewCell {
          return lab
     }()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
     }
     
@@ -39,10 +38,10 @@ class CalendarTableViewCell: UITableViewCell {
     }
     
     func setupCell(){
-        productImage.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(productImage)
+        productImage.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
+        addSubview(productImage)
         
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
@@ -50,11 +49,10 @@ class CalendarTableViewCell: UITableViewCell {
             label.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.9),
             label.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.6),
             
-            productImage.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
-            productImage.leadingAnchor.constraint(equalTo: label.rightAnchor),
+//            productImage.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.rightAnchor),
+            productImage.leftAnchor.constraint(equalTo: label.rightAnchor),
             productImage.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.7),
-            label.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.4),
-            
+            productImage.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.4),
         ])
     }
     

@@ -9,9 +9,11 @@ import Foundation
 import CoreBluetooth
 
 
-class BTManager{
-    
+struct BTData: Hashable, Codable{
+    var name: String
 
-    
+}
+
+class BTManager {
     
 }
